@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html lang="es">
+	<head>
+		<title>CULTURAFREAK</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta name="description" content="Una recopilacion de los mejores comics para poder disfrutar de un buen rato de lectura." />
+		<meta property="og:site_name" content="CULTURAFREAK" />
+		<meta property="og:title" content="CULTURAFREAK" />
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="Una recopilacion de los mejores comics para poder disfrutar de un buen rato de lectura." />
+		<link href="https://fonts.googleapis.com/css?display=swap&family=Inter:800,800italic,400,400italic" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<h1 id="text02">CULTURAFREAK</h1>
+					<div id="container02" class="container default">
+						<div class="wrapper">
+							<div class="inner">
+								<p id="text05">Una recopilacion de los mejores comics para poder disfrutar de un buen rato de lectura.</p>
+							</div>
+						</div>
+					</div>
+					<div id="embed01">
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.22/vue.min.js"></script>
+						
+						<style>
+						@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+						
+						html,
+						body {
+						margin: 0;
+						font-family: Source Sans Pro, sans-serif;
+						}
+						
+						.title-container {
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						}
+						
+						.title {
+						font-family: Source Sans Pro, sans-serif;
+						font-size: 30pt;
+						font-weight: bold;
+						}
+						
+						.project-title {
+						font-size: 18px;
+						padding: 10px;
+						margin-top: 50px;
+						}
+						
+						a:link {
+						color: black;
+						text-decoration: none;
+						}
+						
+						a:visited {
+						color: grey;
+						text-decoration: none;
+						}
+						
+						a:hover {
+						color: black;
+						text-decoration: none;
+						}
+						
+						a:active {
+						text-decoration: none;
+						}
+						
+						.filter {
+						font-family: Source Sans Pro, sans-serif;
+						padding: 6px 6px;
+						margin: 5px;
+						cursor: pointer;
+						border-radius: 3px;
+						transition: all 0.35s;
+						border: none;
+						background-color: black;
+						color: white;
+						font-size: 18px;
+						}
+						
+						.filter:focus {
+						box-shadow: 0px 1px 1px 0px #00000026;
+						outline: none;
+						background: red;
+						}
+						
+						.filter.focus-visible {
+						box-shadow: 0 0 0 2px green;
+						}
+						
+						.filter:hover {
+						background: red;
+						}
+						
+						.filters {text-align: center; max-width: 450px;}
+						
+						.projects {
+						margin-bottom: 50px;
+						margin-top: 25px;
+						display: flex;
+						flex-wrap: wrap;
+						justify-content: center;
+						}
+						
+						.projects-enter {
+						transform: scale(0.5) translatey(-80px);
+						opacity: 0;
+						}
+						
+						.projects-leave-to {
+						transform: translatey(30px);
+						opacity: 0;
+						}
+						
+						.projects-leave-active {
+						position: absolute;
+						z-index: -1;
+						}
+						
+						.project {
+						transition: all 0.35s ease-in-out;
+						margin: 7px;
+						box-shadow: 0px 2px 8px lightgrey;
+						border-radius: 5px;
+						width: 200px;
+						height: 350px;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						text-align: left !important;
+						background-color: white;
+						}
+						
+						.project-image-wrapper {
+						position: relative;
+						}
+						
+						.project-image {
+						width: 100%;
+						padding-bottom: 5px;
+						border-bottom-left-radius: ;
+						border-bottom-right-radius: ;
+						border-top-left-radius: 5px;
+						border-top-right-radius: 5px;
+						}
+						
+						.search-wrapper {
+						margin-top: 20px;
+						position: relative;
+						}
+						
+						input {
+						outline: none;
+						border-radius: 3px;
+						font-family: Source Sans Pro, sans-serif;
+						padding: 4px 12px;
+						color: rgba(0, 0, 0, 0.7);
+						border: 1px solid rgba(0, 0, 0, 0.12);
+						transition: 0.15s all ease-in-out;
+						background: white;
+						width: 200px;
+						}
+						
+						input:focus {
+						outline: none;
+						transform: scale(1.05);
+						}
+						
+						input::-webkit-input-placeholder {
+						font-size: 12px;
+						color: rgba(0, 0, 0, 0.5);
+						font-weight: 100;
+						font-family: Source Sans Pro, sans-serif;
+						}
+						
+						input.focus-visible {
+						box-shadow: 0 0 0 2px green;
+						}
+						
+						</style>
+						
+						<div id="app">
+						<div class="title-container">
+						<div class="filters">
+						<button class="filter" v-on:click="setFilter('TODOS')">TODOS</button>
+						<button class="filter" v-on:click="setFilter('MARVEL')">MARVEL</button>
+						<button class="filter" v-on:click="setFilter('DC')">DC</button>
+						<button class="filter" v-on:click="setFilter('IMAGE')">IMAGE</button>
+						<button class="filter" v-on:click="setFilter('BOOM')">BOOM!</button>
+						<button class="filter" v-on:click="setFilter('DARKHORSE')">DARK HORSE</button>
+						<button class="filter" v-on:click="setFilter('IDW')">IDW</button>
+						<button class="filter" v-on:click="setFilter('VALIANT')">VALIANT</button>
+						<button class="filter" v-on:click="setFilter('VERTIGO')">VERTIGO</button>
+						<button class="filter" v-on:click="setFilter('OTRAS')">OTRAS</button>
+						</div>
+						<div class="search-wrapper">
+						<input type="text" v-model="search" placeholder="🔍 Search" />
+						</div>
+						
+						<transition-group class="projects" name="projects">
+						<div class="project" v-for="project in filteredAndSearched" v-bind:key="project.title">
+						<a v-bind:href="project.url" target="_blank" rel="noopener">
+						<div class="project-image-wrapper">
+						<img class="project-image" v-bind:src="project.image">
+						<span class="project-title">{{project.title}}</span>
+						</div>
+						</a>
+						</div>
+						</transition-group>
+						</div>
+						</div>
+						
+						<script>
+						new Vue({
+						el: "#app",
+						data: {
+						search: "",
+						currentFilter: "TODOS",
+						projects: [
+						{
+						title: "AVENGERS",
+						url: "https://drive.google.com/drive/folders/1ozu5l2KTQoXL64_5XmNI1mgUQ56IxtPG?usp=share_link",
+						image:
+						"https://lh5.googleusercontent.com/2GB5Ncpb1ufcY8U4iFnYXfGQJDip9WolIaJiB0ykD0RC9WugWIiDeDwvd7n8X10MNzxH9QW0YOSYfK4o98UI421S7htpt_jsHcP5pztvNpvqKG79hgacqyRUrFYI0cMpluYCqhchI2Lfeqbv1ylc7EpftrW0Zik2k7nT=w1280",
+						category: ["TODOS", "MARVEL"]
+						},
+						{
+						title: "FANTASTIC FOUR",
+						url: "https://drive.google.com/drive/folders/17FnIQFc_1NhI9BlHmBxRwZGSHKCaxU3i?usp=share_link",
+						image:
+						"https://lh4.googleusercontent.com/nvmPsQjA_Z9n8zFPZ-IUri9ZA_XqiHXqbF8KBjaGLgsbLFXsa2pxa6JUvsQ_0SCP3K6sCsUIXAivSBUv0UtohfT7I-anBEMYeJDx1Sf809a5FNFR=w1280",
+						category: ["TODOS", "MARVEL"]
+						},
+						{
+						title: "X-MEN",
+						url: "https://drive.google.com/drive/folders/12Emm2Q7Oucxj7W2W27aP0gOFHZLh3IWx?usp=share_link",
+						image:
+						"https://lh4.googleusercontent.com/w1uBkT2LTV-ShoK1_kJ-lUhf3nd5qhYuX0-ksRSVn33uiEG4hpVx9-WVhwZxd4g3RDXRId-dWRthAvWB85mdc1-QEiwU_Q33-YR10eA8wwwUesWAybSOLYc1vp8T3bkpYQ=w1280",
+						category: ["TODOS", "MARVEL"]
+						},
+						{
+						title: "A-FORCE",
+						url: "https://drive.google.com/drive/folders/1p4uWvFlDuX57SPrbf5HwqS_qWxDNla_F?usp=sharing",
+						image:
+						"https://lh3.googleusercontent.com/P8ad5OLcr94DlIx88OYuxf6iwoq9h1Bsc0dtudYHZTei77v54fBnjjPKTF1anABitqEXDEXuZw3VnLloQv29rmMxpfBo_8vAFglYBCY536snDuhP9Xf2TSDPPlzHP3mKng=w1280",
+						category: ["TODOS", "MARVEL"]
+						},
+						{
+						title: "AGENTS OF ATLAS",
+						url: "https://drive.google.com/drive/folders/1dMpoF0C6exevSBKHvkdK0pnQT5EgFT4D?usp=sharing",
+						image:
+						"https://lh4.googleusercontent.com/Bvgt65TggVv26U5mk0NgJ3BfVAEC9cXe9bpJeUuIv7CAAs0R-bJTGpxMD0JUGUG2xtNjZUM9VNCU-9ZCmiC3m6pj5RjD92QeOFYSfRwlfrOhS2Ge=w1280",
+						category: ["TODOS", "MARVEL"]
+						},
+						{
+						title: "AMERICA CHAVEZ",
+						url: "https://drive.google.com/drive/folders/1aCWgJ0uGg6vM_Wr1ZsFfRr6ZmfG4JE2U?usp=sharing",
+						image:
+						"https://lh4.googleusercontent.com/_zausRldmi5lmKvi-Lve4wcaDG-o3zRtXUe_f8FEyg48rAf4U2PCkcXt46sQrPchIujTMkW3ggxujhTVPvyDqhCuRYemrq-AwKaVUcyEoxLqku4MawtnpY4oE0X5QzmqrfAmruUMA_nJx69hpcV7EjYBRpQ9rEBrYEHqATiNoBfmMiaWt_QQgQ=w1280",
+						category: ["TODOS", "MARVEL"]
+						},
+						{
+						title: "ANT-MAN",
+						url: "https://drive.google.com/drive/folders/1neL884tLh__GS0i5vg7xHmhaF97ZkfaE?usp=sharing",
+						image:
+						"https://lh3.googleusercontent.com/AfuNEbiuBEasVzrL7Ujy-D-wHIT2wPhTpyy5dR_n5rzn52qL6oh9oXiuFfI4Fk8J_mlBwzQwsQEqi430DjNkwwhf-mB3X5RsRJwpLWOqzBXA3E-ZVwIFegymowFEIF5mqyoRxvyyXzZkA0hHxrpkAxZc4So_4PKFeuPil_Nq1tCSmKmMxq2Adw=w1280",
+						category: ["TODOS", "MARVEL"]
+						}
+						]
+						},
+						
+						computed: {
+						filteredAndSearched: function () {
+						return this.projects.filter((project) => {
+						// optional to have console.log
+						console.log("this.currentFilter", this.currentFilter);
+						return (
+						project.title.toLowerCase().includes(this.search.toLowerCase()) &&
+						project.category.indexOf(this.currentFilter) !== -1
+						);
+						});
+						}
+						},
+						
+						methods: {
+						setFilter: function (project) {
+						this.currentFilter = project;
+						}
+						}
+						});
+						
+						</script>
+					</div>
+					<ul id="icons01" class="icons">
+						<li>
+							<a class="n01" href="https://domain.ext/path">
+								<svg><use xlink:href="assets/icons.svg#instagram"></use></svg>
+								<span class="label">Instagram</span>
+							</a>
+						</li><li>
+							<a class="n02" href="https://domain.ext/path">
+								<svg><use xlink:href="assets/icons.svg#unsplash"></use></svg>
+								<span class="label">Unsplash</span>
+							</a>
+						</li><li>
+							<a class="n03" href="https://domain.ext/path">
+								<svg><use xlink:href="assets/icons.svg#twitter"></use></svg>
+								<span class="label">Twitter</span>
+							</a>
+						</li><li>
+							<a class="n04" href="https://domain.ext/path">
+								<svg><use xlink:href="assets/icons.svg#snapchat"></use></svg>
+								<span class="label">Snapchat</span>
+							</a>
+						</li><li>
+							<a class="n05" href="sms:0000000000">
+								<svg><use xlink:href="assets/icons.svg#message"></use></svg>
+								<span class="label">Message</span>
+							</a>
+						</li><li>
+							<a class="n06" href="tel:0000000000">
+								<svg><use xlink:href="assets/icons.svg#mobile"></use></svg>
+								<span class="label">Mobile</span>
+							</a>
+						</li><li>
+							<a class="n07" href="mailto:user@domain.ext">
+								<svg><use xlink:href="assets/icons.svg#email"></use></svg>
+								<span class="label">Email</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="assets/main.js"></script>
+	</body>
+</html>
