@@ -1,231 +1,158 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-   <meta charset="UTF-8">
-   <title>CULTURAFREAK</title>
-   <link rel="icon" type="image/x-icon" href="assets/culturafreak.ico">
-   <meta name="viewport" content="width=device-width,initial-scale=1" />
-   <meta name="description"
-      content="Una recopilacion de los mejores comics para poder disfrutar de un buen rato de lectura." />
-   <meta property="og:site_name" content="CULTURAFREAK" />
-   <meta property="og:title" content="CULTURAFREAK" />
-   <meta property="og:type" content="website" />
-   <meta property="og:description"
-      content="Una recopilacion de los mejores comics para poder disfrutar de un buen rato de lectura." />
-   <meta property="og:image" content="assets/culturafreak.png">
-
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-   <link href="https://fonts.googleapis.com/css?display=swap&family=Inter:800,800italic,400,400italic" rel="stylesheet"
-      type="text/css" />
-   <link rel="stylesheet" href="assets/main.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f0f0f0">
+    <title>CULTURAFREAK</title>
+    <link rel="icon" type="image/x-icon" href="img/CULTURAFREAK.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/CULTURAFREAK.png">
+    <meta name="description" content="CULTURAFREAK">
+    <meta property="og:title" content="CULTURAFREAK">
+    <meta property="og:description" content="Directorio de Comics">
+    <meta property="og:image" content="img/culturafreak.png">
+    <meta property="og:url" content="https://comics.ajra.es/">
+    <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-   <div id="wrapper">
-      <div id="main">
-         <div class="inner">
-            <h1 id="text02">CULTURAFREAK</h1>
-            <div id="container02" class="container default">
-               <div class="wrapper">
-                  <div class="inner">
-                     <p id="text05">Una recopilacion de los mejores comics para poder disfrutar de un buen rato de
-                        lectura.</p>
-                  </div>
-               </div>
-            </div>
-            <div id="embed01">
-               <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.22/vue.min.js"></script>
-
-               <style>
-                  @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
-
-                  html,
-                  body {
-                     margin: 0;
-                     font-family: verdana, sans-serif;
-                  }
-
-                  .title-container {
-                     display: flex;
-                     flex-direction: column;
-                     justify-content: center;
-                     align-items: center;
-                  }
-
-                  a:link {
-                     color: black;
-                     text-decoration: none;
-                  }
-
-                  a:active {
-                     text-decoration: none;
-                  }
-
-                  .filter {
-                     font-family: Source Sans Pro, sans-serif;
-                     padding: 6px 6px;
-                     margin: 5px;
-                     cursor: pointer;
-                     border-radius: 3px;
-                     transition: all 0.35s;
-                     border: none;
-                     background-color: black;
-                     color: white;
-                     font-size: 18px;
-                  }
-
-                  .filter:focus {
-                     box-shadow: 0px 1px 1px 0px #00000026;
-                     outline: none;
-                     background: red;
-                  }
-
-                  .filter.focus-visible {
-                     box-shadow: 0 0 0 2px green;
-                  }
-
-                  .filter:hover {
-                     background: red;
-                  }
-
-                  .filters {
-                     text-align: center;
-                     max-width: 450px;
-                     display: flex;
-                     flex-direction: row;
-                     flex-wrap: wrap;
-                     justify-content: center;
-                  }
-
-                  .projects {
-                     margin-bottom: 50px;
-                     margin-top: 25px;
-                     display: flex;
-                     flex-wrap: wrap;
-                     justify-content: center;
-                  }
-
-                  .projects-enter {
-                     transform: scale(0.5) translatey(-80px);
-                     opacity: 0;
-                  }
-
-                  .projects-leave-to {
-                     transform: translatey(30px);
-                     opacity: 0;
-                  }
-
-                  .projects-leave-active {
-                     position: absolute;
-                     z-index: -1;
-                  }
-
-                  .project {
-                     transition: all 0.35s ease-in-out;
-                     margin: 7px;
-                     box-shadow: 0px 2px 8px lightgrey;
-                     border-radius: 5px;
-                     display: flex;
-                     flex-direction: column;
-                     align-items: center;
-                     text-align: left !important;
-                     background-color: white;
-                     width: 12rem;
-                  }
-
-
-
-
-                  @media (max-width: 500px) {
-                     .project {
-                        width: 10rem;
-                        margin: 3px;
-                     }
-
-                     .filters {
-                        justify-content: space-between;
-                     }
-                  }
-               </style>
-
-               <div id="app">
-                  <div class="title-container">
-                     <div class="filters">
-                        <button class="filter" v-on:click="setFilter('TODOS')">TODOS</button>
-                        <button class="filter" v-on:click="setFilter('MARVEL')">MARVEL</button>
-                        <button class="filter" v-on:click="setFilter('DC')">DC</button>
-                        <button class="filter" v-on:click="setFilter('IMAGE')">IMAGE</button>
-                        <button class="filter" v-on:click="setFilter('BOOM')">BOOM!</button>
-                        <button class="filter" v-on:click="setFilter('DARK HORSE')">DARK HORSE</button>
-                        <button class="filter" v-on:click="setFilter('IDW')">IDW</button>
-                        <button class="filter" v-on:click="setFilter('VALIANT')">VALIANT</button>
-                        <button class="filter" v-on:click="setFilter('VERTIGO')">VERTIGO</button>
-                        <button class="filter" v-on:click="setFilter('OTRAS')">OTRAS</button>
-                     </div>
-
-
-                     <div class="mt-4 mb-2">
-                        <input type="text" class="form-control" v-model="search" id="exampleFormControlInput1"
-                           placeholder="Buscar">
-                     </div>
-
-                     <transition-group class="projects" name="projects">
-                        <div class="project card" v-for="project in filteredAndSearched" v-bind:key="project.title">
-                           <a v-bind:href="project.url" target="_blank" rel="noopener">
-                              <img class="card-img-top" v-bind:src="project.image">
-                              <div class="card-body">
-                                 <h5 class="card-title">{{project.title}}</h5>
-                              </div>
-                           </a>
-                        </div>
-                     </transition-group>
-                  </div>
-               </div>
-
-               <script>
-                  new Vue({
-                     el: "#app",
-                     data: {
-                        search: "",
-                        currentFilter: "TODOS",
-                        projects: [],
-                     },
-                     mounted() {
-                        fetch('projects.json')
-                           .then(response => response.json())
-                           .then(data => {
-                              this.projects = data;
-                           })
-                           .catch(error => console.error('Error loading projects:', error));
-                     },
-                     computed: {
-                        filteredAndSearched: function () {
-                           return this.projects.filter((project) => {
-                              return (
-                                 project.title.toLowerCase().includes(this.search.toLowerCase()) &&
-                                 project.category.indexOf(this.currentFilter) !== -1
-                              );
-                           });
-                        }
-                     },
-                     methods: {
-                        setFilter: function (project) {
-                           this.currentFilter = project;
-                        }
-                     }
-                  });
-               </script>
-
-            </div>
-         </div>
-      </div>
-   </div>
-   <script src="assets/main.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"></script>
+    <header class="home">
+        <img src="img/culturafreak.png" alt="CULTURAFREAK" style="border-radius: 50%; margin-bottom: 25px;">
+        <h1>CULTURAFREAK</h1>
+    </header>
+    <div class="filter-buttons">
+        <button onclick="filterResources('todos')" class="botonesfiltro">TODOS</button>
+        <button onclick="filterResources('marvel')" class="botonesfiltro">MARVEL</button>
+        <button onclick="filterResources('dc')" class="botonesfiltro">DC</button>
+        <button onclick="filterResources('image')" class="botonesfiltro">IMAGE</button>
+        <button onclick="filterResources('boom')" class="botonesfiltro">BOOM!</button>
+        <button onclick="filterResources('darkhorse')" class="botonesfiltro">DARK HORSE</button>
+        <button onclick="filterResources('idw')" class="botonesfiltro">IDW</button>
+        <button onclick="filterResources('valiant')" class="botonesfiltro">VALIANT</button>
+        <button onclick="filterResources('vertigo')" class="botonesfiltro">VERTIGO</button>
+        <button onclick="filterResources('otras')" class="botonesfiltro">OTRAS</button>
+        <input type="text" id="searchInput" class="buscador" oninput="searchResources()" placeholder="Buscar comics...">
+    </div>
+    <div id="events" class="row"></div>
 </body>
 
 </html>
+<script>
+    const SPREADSHEET_ID = '1bjuRsUCQLT_MwgKQ9GR7gPHJyYq339v-JHM_ErPbGjI';
+    const API_KEY = 'AIzaSyBVknxjJb5j7AFLBrltXfOptE1xWweeGJ0';
+    const recursosContainer = document.getElementById('events');
+
+    // Función para crear una tarjeta de recurso
+    function createRecursoCard(event) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        const cardLink = document.createElement('a');
+        cardLink.href = event.url;
+        const cardImage = createCardImage(event.imagen, event.recurso);
+        const cardBody = createCardBody(event.recurso);
+        cardLink.appendChild(cardImage);
+        cardLink.appendChild(cardBody);
+        card.appendChild(cardLink);
+        return card;
+    }
+
+    // Función para crear la imagen de la tarjeta
+    function createCardImage(imageSrc, altText) {
+        const cardImage = document.createElement('img');
+        cardImage.src = imageSrc;
+        cardImage.alt = altText;
+        return cardImage;
+    }
+
+    function createCardBody(title) {
+    const cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
+    const cardTitle = document.createElement('h2');
+    cardTitle.className = 'recurso';
+    cardTitle.textContent = title;
+    
+    
+    cardBody.appendChild(cardTitle);
+    return cardBody;
+}
+
+function fetchGoogleSheetResources() {
+    const sheetRange = 'CulturaFreak!A2:D';
+    const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${sheetRange}?key=${API_KEY}`;
+
+    fetch(sheetUrl)
+        .then(response => response.json())
+        .then(data => {
+            const rows = data.values || [];
+            allResources = rows.map(row => {
+                const [recurso, imageFilename, url, categoria] = row;
+                return {
+                    recurso,
+                    imagen: `img/${imageFilename}`,
+                    url: url || '#',
+                    categoria
+                };
+            });
+            displayResources(allResources);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+
+    function displayResources(resources) {
+        recursosContainer.innerHTML = '';
+
+        resources.forEach(event => {
+            recursosContainer.appendChild(createRecursoCard(event));
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchGoogleSheetResources);
+
+    function filterResources(categoria) {
+    document.querySelectorAll('.botonesfiltro').forEach(button => {
+        button.classList.add('inactive');
+    });
+
+    if (categoria === 'todos') {
+        document.querySelectorAll('.botonesfiltro').forEach(button => {
+            button.classList.remove('inactive');
+        });
+    } else {
+        event.currentTarget.classList.remove('inactive');
+    }
+
+    if (categoria === 'todos') {
+        displayResources(allResources);
+    } else {
+        const filteredResources = allResources.filter(resource => resource.categoria.toLowerCase() === categoria);
+        displayResources(filteredResources);
+    }
+}
+
+    function searchResources() {
+    const searchString = document.getElementById('searchInput').value.toLowerCase();
+
+    const filteredResources = allResources.filter(resource => 
+        resource.recurso.toLowerCase().includes(searchString) ||
+        resource.descripcion.toLowerCase().includes(searchString)
+    );
+
+    displayResources(filteredResources);
+}
+
+</script>
+
+<style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .home h2 {
+        margin: 5px 25px;
+    }
+</style>
