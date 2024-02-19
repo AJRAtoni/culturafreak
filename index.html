@@ -136,7 +136,7 @@ function fetchGoogleSheetResources() {
     function searchResources() {
     const searchString = document.getElementById('searchInput').value.toLowerCase();
 
-    const filteredResources = allResources.filter(resource => 
+    const filteredResources = allResources.filter(resource =>
         resource.recurso.toLowerCase().includes(searchString) ||
         resource.descripcion.toLowerCase().includes(searchString)
     );
