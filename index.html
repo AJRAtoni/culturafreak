@@ -66,40 +66,40 @@
     }
 
     function createCardBody(title) {
-    const cardBody = document.createElement('div');
-    cardBody.className = 'card-body';
-    const cardTitle = document.createElement('h2');
-    cardTitle.className = 'recurso';
-    cardTitle.textContent = title;
-    
-    
-    cardBody.appendChild(cardTitle);
-    return cardBody;
-}
+        const cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+        const cardTitle = document.createElement('h2');
+        cardTitle.className = 'recurso';
+        cardTitle.textContent = title;
 
-function fetchGoogleSheetResources() {
-    const sheetRange = 'CulturaFreak!A2:D';
-    const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${sheetRange}?key=${API_KEY}`;
 
-    fetch(sheetUrl)
-        .then(response => response.json())
-        .then(data => {
-            const rows = data.values || [];
-            allResources = rows.map(row => {
-                const [recurso, imageFilename, url, categoria] = row;
-                return {
-                    recurso,
-                    imagen: `img/${imageFilename}`,
-                    url: url || '#',
-                    categoria
-                };
+        cardBody.appendChild(cardTitle);
+        return cardBody;
+    }
+
+    function fetchGoogleSheetResources() {
+        const sheetRange = 'CulturaFreak!A2:D';
+        const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${sheetRange}?key=${API_KEY}`;
+
+        fetch(sheetUrl)
+            .then(response => response.json())
+            .then(data => {
+                const rows = data.values || [];
+                allResources = rows.map(row => {
+                    const [recurso, imageFilename, url, categoria] = row;
+                    return {
+                        recurso,
+                        imagen: `img/${imageFilename}`,
+                        url: url || '#',
+                        categoria
+                    };
+                });
+                displayResources(allResources);
+            })
+            .catch(error => {
+                console.error('Error:', error);
             });
-            displayResources(allResources);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
+    }
 
 
     function displayResources(resources) {
@@ -113,34 +113,36 @@ function fetchGoogleSheetResources() {
     document.addEventListener('DOMContentLoaded', fetchGoogleSheetResources);
 
     function filterResources(categoria) {
-    document.querySelectorAll('.botonesfiltro').forEach(button => {
-        button.classList.add('inactive');
-    });
-
-    if (categoria === 'todos') {
         document.querySelectorAll('.botonesfiltro').forEach(button => {
-            button.classList.remove('inactive');
+            button.classList.add('inactive');
         });
-    } else {
-        event.currentTarget.classList.remove('inactive');
-    }
 
-    if (categoria === 'todos') {
-        displayResources(allResources);
-    } else {
-        const filteredResources = allResources.filter(resource => resource.categoria.toLowerCase() === categoria);
-        displayResources(filteredResources);
+        if (categoria === 'todos') {
+            document.querySelectorAll('.botonesfiltro').forEach(button => {
+                button.classList.remove('inactive');
+            });
+        } else {
+            event.currentTarget.classList.remove('inactive');
+        }
+
+        if (categoria === 'todos') {
+            displayResources(allResources);
+        } else {
+            const filteredResources = allResources.filter(resource => resource.categoria.toLowerCase() === categoria);
+            displayResources(filteredResources);
+        }
     }
-}
 
     function searchResources() {
-    const searchString = document.getElementById('searchInput').value.toLowerCase();
+        const searchString = document.getElementById('searchInput').value.toLowerCase();
 
-    const filteredResources = allResources.filter(resource =>
-        resource.recurso.toLowerCase().includes(searchString) ||
-    );
+        const filteredResources = allResources.filter(resource =>
+            resource.recurso.toLowerCase().includes(searchString)
+        );
 
-    displayResources(filteredResources);
+        displayResources(filteredResources);
+    }
+
 }
 
 </script>
